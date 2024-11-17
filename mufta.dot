@@ -1,0 +1,99 @@
+digraph G {
+    rankdir=TB;
+    nodesep=0.3;
+    graph [splines=ortho, nodesep=0.3, ranksep=1];
+
+    // Настройка общего стиля узлов
+    node [shape=plaintext, fontname="Arial", fontsize=10];
+
+    // Левый блок кабеля (KPC-16 OK-1)
+    subgraph cluster_kabel_left {
+        label="KPC-16 OK-1";
+        color=black;
+
+        kabel_left [label=<
+            <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+                <tr><td bgcolor="lightblue" colspan="2"><b>KPC-16 OK-1</b></td></tr>
+                <tr><td bgcolor="lightgrey">Модуль</td><td bgcolor="lightgrey">Цвет</td></tr>
+                <tr><td>A1001</td><td bgcolor="blue">Синий</td></tr>
+                <tr><td>A1002</td><td bgcolor="red">Красный</td></tr>
+                <tr><td>A1003</td><td bgcolor="yellow">Желтый</td></tr>
+                <tr><td>A1004</td><td bgcolor="green">Зеленый</td></tr>
+                <tr><td>A1005</td><td bgcolor="brown">Коричневый</td></tr>
+                <tr><td>A1006</td><td bgcolor="purple">Фиолетовый</td></tr>
+                <tr><td>A1007</td><td bgcolor="orange">Оранжевый</td></tr>
+                <tr><td>A1008</td><td bgcolor="grey">Серый</td></tr>
+                <tr><td>A1009</td><td bgcolor="white">Белый</td></tr>
+                <tr><td>A1010</td><td bgcolor="black" fontcolor="white">Черный</td></tr>
+            </table>
+        >];
+    }
+
+    // Центральный блок сплайс-пластины
+    subgraph cluster_splice_plate {
+        label="Сплайс-пластина";
+        color=black;
+
+        splice_plate [label=<
+            <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+                <tr><td bgcolor="lightgreen" colspan="4"><b>Сплайс-пластина</b></td></tr>
+                <tr><td bgcolor="lightgrey">Номер</td><td bgcolor="lightgrey">Волокно 1</td><td bgcolor="lightgrey">Волокно 2</td><td bgcolor="lightgrey">Цвет</td></tr>
+                <tr><td>1</td><td>A1001</td><td>B1001</td><td bgcolor="blue">Синий</td></tr>
+                <tr><td>2</td><td>A1002</td><td>B1002</td><td bgcolor="red">Красный</td></tr>
+                <tr><td>3</td><td>A1003</td><td>B1003</td><td bgcolor="yellow">Желтый</td></tr>
+                <tr><td>4</td><td>A1004</td><td>B1004</td><td bgcolor="green">Зеленый</td></tr>
+                <tr><td>5</td><td>A1005</td><td>B1005</td><td bgcolor="brown">Коричневый</td></tr>
+                <tr><td>6</td><td>A1006</td><td>B1006</td><td bgcolor="purple">Фиолетовый</td></tr>
+                <tr><td>7</td><td>A1007</td><td>B1007</td><td bgcolor="orange">Оранжевый</td></tr>
+                <tr><td>8</td><td>A1008</td><td>B1008</td><td bgcolor="grey">Серый</td></tr>
+                <tr><td>9</td><td>A1009</td><td>B1009</td><td bgcolor="white">Белый</td></tr>
+                <tr><td>10</td><td>A1010</td><td>B1010</td><td bgcolor="black" fontcolor="white">Черный</td></tr>
+            </table>
+        >];
+    }
+
+    // Правый блок кабеля (БС Сулимова-53)
+    subgraph cluster_kabel_right {
+        label="БС Сулимова-53";
+        color=black;
+
+        kabel_right [label=<
+            <table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+                <tr><td bgcolor="lightblue" colspan="2"><b>БС Сулимова-53</b></td></tr>
+                <tr><td bgcolor="lightgrey">Модуль</td><td bgcolor="lightgrey">Цвет</td></tr>
+                <tr><td>B1001</td><td bgcolor="blue">Синий</td></tr>
+                <tr><td>B1002</td><td bgcolor="red">Красный</td></tr>
+                <tr><td>B1003</td><td bgcolor="yellow">Желтый</td></tr>
+                <tr><td>B1004</td><td bgcolor="green">Зеленый</td></tr>
+                <tr><td>B1005</td><td bgcolor="brown">Коричневый</td></tr>
+                <tr><td>B1006</td><td bgcolor="purple">Фиолетовый</td></tr>
+                <tr><td>B1007</td><td bgcolor="orange">Оранжевый</td></tr>
+                <tr><td>B1008</td><td bgcolor="grey">Серый</td></tr>
+                <tr><td>B1009</td><td bgcolor="white">Белый</td></tr>
+                <tr><td>B1010</td><td bgcolor="black" fontcolor="white">Черный</td></tr>
+            </table>
+        >];
+    }
+// Линии соединения между левым кабелем, сплайс-пластиной и правым кабелем
+    kabel_left:A1001:e -> splice_plate:1:w [color=blue, penwidth=2, constraint=false];
+    kabel_left:A1002:e -> splice_plate:2:w [color=red, penwidth=2, constraint=false];
+    kabel_left:A1003:e -> splice_plate:3:w [color=yellow, penwidth=2, constraint=false];
+    kabel_left:A1004:e -> splice_plate:4:w [color=green, penwidth=2, constraint=false];
+    kabel_left:A1005:e -> splice_plate:5:w [color=brown, penwidth=2, constraint=false];
+    kabel_left:A1006:e -> splice_plate:6:w [color=purple, penwidth=2, constraint=false];
+    kabel_left:A1007:e -> splice_plate:7:w [color=orange, penwidth=2, constraint=false];
+    kabel_left:A1008:e -> splice_plate:8:w [color=grey, penwidth=2, constraint=false];
+    kabel_left:A1009:e -> splice_plate:9:w [color=white, penwidth=2, constraint=false];
+    kabel_left:A1010:e -> splice_plate:10:w [color=black, penwidth=2, constraint=false];
+
+    splice_plate:1:e -> kabel_right:B1001:w [color=blue, penwidth=2, constraint=false];
+    splice_plate:2:e -> kabel_right:B1002:w [color=red, penwidth=2, constraint=false];
+    splice_plate:3:e -> kabel_right:B1003:w [color=yellow, penwidth=2, constraint=false];
+    splice_plate:4:e -> kabel_right:B1004:w [color=green, penwidth=2, constraint=false];
+    splice_plate:5:e -> kabel_right:B1005:w [color=brown, penwidth=2, constraint=false];
+    splice_plate:6:e -> kabel_right:B1006:w [color=purple, penwidth=2, constraint=false];
+    splice_plate:7:e -> kabel_right:B1007:w [color=orange, penwidth=2, constraint=false];
+    splice_plate:8:e -> kabel_right:B1008:w [color=grey, penwidth=2, constraint=false];
+    splice_plate:9:e -> kabel_right:B1009:w [color=white, penwidth=2, constraint=false];
+    splice_plate:10:e -> kabel_right:B1010:w [color=black, penwidth=2, constraint=false];
+}
