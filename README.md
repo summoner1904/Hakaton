@@ -1,33 +1,57 @@
-# Описание работы
-Изначально не знали, что такое NetBox, поэтому возникло много сложностей.
+# Advanced_Cabel_Plugin
 
-В процессе работы:
-- Узнали что такое NetBox;
-- Научились разворачивать NetBox на Ubuntu;
-- Улучшили навыки работы с терминалом Linux;
-- Создали схему разварки муфты;
-- Создали карту с маршрутами кабелей
+A NetBox plugin to enhance cable functionality with fiber types and modules
 
 
-В самом начале накатили Ubuntu 22.04 на виртуальную машину.
-После этого клонировали репозиторий NetBox на систему.
-Настроили конфигурационный файл и развернули платформу на локальном сервере.
-![image](https://github.com/user-attachments/assets/a913ad00-da21-45c4-a4d9-aa2d1ec5472a)
-
-Развернули с помощью uWSGI вместо Gunicorn.
-![image](https://github.com/user-attachments/assets/0d31a4dd-5ac0-47a3-aaf1-af094359ec46)
-
-После этого приступили к визуализации кабелей/муфт/сплайс-пластины, маршрутов кабелей в Екатеринбурге
-![image](https://github.com/user-attachments/assets/54be4078-3c81-401d-84c7-a2d564644ddb)
-![image](https://github.com/user-attachments/assets/be3d5e8a-ab5a-4caf-ae89-4b460e676eea)
-![image](https://github.com/user-attachments/assets/2d747257-f00f-4a15-864e-1bc14d1e4bd9)
-В планах было, чтобы при нажатии на какой-то из кабелей открывалась информация о нем:
-- Протяженность
-- Точка А
-- Точка Б
-- Маршрут на карте (как на скриншотах выше)
+* Free software: MIT
+* Documentation: https://summoner1904.github.io/AdvancedCable/
 
 
+## Features
 
+The features the plugin provides should be listed here.
 
+## Compatibility
 
+| NetBox Version | Plugin Version |
+|----------------|----------------|
+|     4.0        |      0.1.0     |
+
+## Installing
+
+For adding to a NetBox Docker setup see
+[the general instructions for using netbox-docker with plugins](https://github.com/netbox-community/netbox-docker/wiki/Using-Netbox-Plugins).
+
+While this is still in development and not yet on pypi you can install with pip:
+
+```bash
+pip install git+https://github.com/summoner1904/AdvancedCable
+```
+
+or by adding to your `local_requirements.txt` or `plugin_requirements.txt` (netbox-docker):
+
+```bash
+git+https://github.com/summoner1904/AdvancedCable
+```
+
+Enable the plugin in `/opt/netbox/netbox/netbox/configuration.py`,
+ or if you use netbox-docker, your `/configuration/plugins.py` file :
+
+```python
+PLUGINS = [
+    'AdvancedCable'
+]
+
+PLUGINS_CONFIG = {
+    "AdvancedCable": {},
+}
+```
+
+## Credits
+
+Based on the NetBox plugin tutorial:
+
+- [demo repository](https://github.com/netbox-community/netbox-plugin-demo)
+- [tutorial](https://github.com/netbox-community/netbox-plugin-tutorial)
+
+This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [`netbox-community/cookiecutter-netbox-plugin`](https://github.com/netbox-community/cookiecutter-netbox-plugin) project template.
