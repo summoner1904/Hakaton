@@ -1,0 +1,23 @@
+digraph G {
+    rankdir=TB; // Схема сверху вниз (Layout top to bottom)
+    node [shape=record, fontname="Arial"];
+
+    // Узлы сети (Network nodes)
+    SNR_KPC_96 [label="SNR KPC-96\nМамина-Сибиряка, 145 / ekt1/001", shape=box, style="rounded,filled", fillcolor=lightgrey];
+    Cable_SL_69_343 [label="Cable СЛ-69-343\nConnected\nSinglemode Fiber\n2.37 Kilometers", shape=box, style="rounded,filled", fillcolor=lightblue];
+    Cable_SL_69 [label="Cable СЛ-69\nConnected\nSinglemode Fi\n2.372.60 Mete", shape=box, style="rounded,filled", fillcolor=orange];
+    OK3_ekt14 [label="ok3.ekt14\nSNR KPC-16\nМамина-Сибиряка, 85a (ekt14)\nМаузера, к.113 (ekt14-113) / 606", shape=box, style="rounded,filled", fillcolor=lightgray];
+    Cable_12 [label="Cable #12\nConnected\nSinglemode Fiber", shape=box, style="rounded,filled", fillcolor=lightgray];
+    ET_0_0_0 [label="et-0/0/0", shape=box, style="rounded,filled", fillcolor=lightgrey];
+    BR1_ekt14 [label="br1.ekt14\nJuniper MX204\nМамина-Сибиряка, 85a (ekt14)\nМаузера, к.113 (ekt14-113) / 606", shape=box, style="rounded,filled", fillcolor=orange];
+
+    // Соединения (Connections)
+    SNR_KPC_96 -> Cable_SL_69_343 [label="10 (синий/голубой)        ", color="blue"]; // Connects SNR KPC-96 to Cable СЛ-69-343 with label 10
+    SNR_KPC_96 -> Cable_SL_69 [label="11 (синий/оранжевый)", color="orange"]; // Connects SNR KPC-96 to Cable СЛ-69-343 with label 11
+    Cable_SL_69_343 -> OK3_ekt14 [label="1  (синий/голубой)", color="blue"]; // Connects Cable СЛ-69-343 to ok3.ekt14 with label 1
+    Cable_SL_69 -> OK3_ekt14 [label="2 (синий/оранжевый)", color="orange"]; // Connects Cable СЛ-69-343 to ok3.ekt14 with label 2
+    OK3_ekt14 -> Cable_12 [label=" А0001 (A0001)            ", color="black"]; // Bi-directional connection from ok3.ekt14 to Cable #12 labeled A0001
+    OK3_ekt14 -> Cable_12 [label="  2  (A1002)",  color="black"]; // Bi-directional connection from ok3.ekt14 to Cable #12 labeled 2
+    Cable_12 -> ET_0_0_0 [label="  Connected", color="black"]; // Connects Cable #12 to et-0/0/0
+    ET_0_0_0 -> BR1_ekt14 [label="", color="black"]; // Connects et-0/0/0 to br1.ekt14
+}
